@@ -33,32 +33,18 @@ const getRandomNumber = (from, before) => {
 
 const getRandomArrayElement = (array) => array[getRandomNumber(0, array.length - 1)];
 
-const counterPhoto = (() => {
+const incrementCounter = (() => {
   let count = 1;
   return function() {
     return count++;
   };
-})();
+});
 
-const counterComment = (() => {
-  let count = 1;
-  return function() {
-    return count++;
-  };
-})();
-
-const createComment = () => {
-  const id = counterComment();
-  return {
-    id,
-    avatar: `img/avatar-${getRandomNumber(MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER)}.svg`,
-    message: getRandomArrayElement(MESSAGES),
-    name: getRandomArrayElement(NAMES)
-  };
-};
+const countPhoto = incrementCounter();
+const countComment = incrementCounter();
 
 const createPhoto = () => {
-  const id = counterPhoto();
+  const id = countPhoto();
   return {
     id,
     url: `photos/${id}.jpg`,
@@ -68,4 +54,16 @@ const createPhoto = () => {
   };
 };
 
+const createComment = () => {
+
+  const id = countComment();
+  return {
+    id,
+    avatar: `img/avatar-${getRandomNumber(MIN_AVATAR_NUMBER, MAX_AVATAR_NUMBER)}.svg`,
+    message: getRandomArrayElement(MESSAGES),
+    name: getRandomArrayElement(NAMES)
+  };
+};
+
 const photos = Array.from({length: MAX_NUMBER_OF_PHOTOS}, createPhoto);
+console.log(photos);
