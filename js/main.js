@@ -43,17 +43,6 @@ const incrementCounter = (() => {
 const countPhoto = incrementCounter();
 const countComment = incrementCounter();
 
-const createPhoto = () => {
-  const id = countPhoto();
-  return {
-    id,
-    url: `photos/${id}.jpg`,
-    description: `Это фотография #${id}`,
-    likes: getRandomNumber(MIN_LIKES, MAX_LIKES),
-    commens: Array.from({length: getRandomNumber(MIN_COMMENTS, MAX_COMMENTS)}, createComment)
-  };
-};
-
 const createComment = () => {
 
   const id = countComment();
@@ -65,5 +54,17 @@ const createComment = () => {
   };
 };
 
+const createPhoto = () => {
+  const id = countPhoto();
+  return {
+    id,
+    url: `photos/${id}.jpg`,
+    description: `Это фотография #${id}`,
+    likes: getRandomNumber(MIN_LIKES, MAX_LIKES),
+    commens: Array.from({length: getRandomNumber(MIN_COMMENTS, MAX_COMMENTS)}, createComment)
+  };
+};
+
 const photos = Array.from({length: MAX_NUMBER_OF_PHOTOS}, createPhoto);
 console.log(photos);
+
