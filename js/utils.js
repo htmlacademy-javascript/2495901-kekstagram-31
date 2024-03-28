@@ -29,9 +29,16 @@ const incrementCounter = (() => {
   return () => count++;
 });
 
+const renderPack = (items, makeElement, container) => {
+  const fragment = document.createDocumentFragment();
+  items.forEach((item) => fragment.appendChild(makeElement(item)));
+  container.appendChild(fragment);
+};
+
 export {
   getRandomNumber,
   getRandomArrayElement,
-  incrementCounter
+  incrementCounter,
+  renderPack
 };
 
