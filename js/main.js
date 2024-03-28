@@ -1,4 +1,5 @@
 import {createPhotos} from './create-photo.js';
+import {renderThumbnails} from './thumbnail_renderer.js';
 
-console.log(createPhotos());
+renderThumbnails(createPhotos());
 
