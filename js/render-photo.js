@@ -12,11 +12,12 @@ const createThumbnail = (photo) => {
   return photoElement;
 };
 
-//export const renderThumbnails = (photos) => photoConteiner.append(...photos.map(createThumbnail));
 export const renderThumbnails = (photos) => {
   const fragment = document.createDocumentFragment();
   photos.forEach((photo) => fragment.appendChild(createThumbnail(photo)));
   photoConteiner.appendChild(fragment);
 };
+
+export {photoConteiner};
 
 
