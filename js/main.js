@@ -5,13 +5,21 @@ const photos = createPhotos();
 
 renderThumbnails(photos);
 
-const photoConteiner = document.querySelector('.pictures');
+//const photoContainer = document.querySelector('.pictures');
 const photoFullContainer = document.querySelector('.big-picture');
 const photoFullImg = photoFullContainer.querySelector('.big-picture__img').querySelector('img');
-const photoFullLikeCount = photoFullContainer.querySelector('.likes-count');
-const photoFullUlCount = document.querySelector('.social__comments').children;
-const photoFullCommentShowCount = photoFullContainer.querySelector('.social__comment-shown-count');
-const photoFullCommentTotalCount = photoFullContainer.querySelector('.social__comment-total-count');
+const photoFullButtonClosed = photoFullContainer.querySelector('.big-picture__cancel');
+
+const likesCount = photoFullContainer.querySelector('.likes-count');
+
+const commentContainer = photoFullContainer.querySelector('.social__comments');
+const commentTemplate = commentContainer.querySelector('.social__comment');
+const commentSocialCaption = photoFullContainer.querySelector('.social__caption');
+const commentSocialCount = photoFullContainer.querySelector('.social__comment-count');
+const commentLoader = photoFullContainer.querySelector('.social__comments-loader');
+
+// const photoFullCommentShowCount = photoFullContainer.querySelector('.social__comment-shown-count');
+// const photoFullCommentTotalCount = photoFullContainer.querySelector('.social__comment-total-count');
 
 
 const openFullPhoto = (photoId) => {
@@ -21,15 +29,15 @@ const openFullPhoto = (photoId) => {
 };
 
 
-photoConteiner.addEventListener('click', (evt) => {
+photoContainer.addEventListener('click', (evt) => {
   const currentPhotoNode = evt.target.closest('.picture');
 
   if (currentPhotoNode) {
     photoFullContainer.classList.remove('hidden');
   }
   photoFullImg.src = photos[0].url;
-  photoFullLikeCount.textContent = photos[0].likes;
-  photoFullCommentShowCount.textContent = photoFullUlCount.length;
+  likesCount.textContent = photos[0].likes;
+  photoFullCommentShowCount.textContent = commentTemplate.length;
   photoFullCommentTotalCount.textContent = photos[0].commens.length;
 
 });
