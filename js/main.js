@@ -1,5 +1,3 @@
-import {createPhotos} from './create-photo.js';
-import {renderThumbnails} from './thumbnail_renderer.js';
+import {addClicKEvent, openPhotoFull, renderPhotoFullById} from './render-full-photo.js';
 
-renderThumbnails(createPhotos());
-
+addClicKEvent(document.querySelector('.pictures'), openPhotoFull, renderPhotoFullById);
