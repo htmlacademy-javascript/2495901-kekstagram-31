@@ -7,6 +7,7 @@ const commentContainer = photoFullContainer.querySelector('.social__comments');
 const commentTemplate = commentContainer.querySelector('.social__comment');
 const commentSocialCount = photoFullContainer.querySelector('.social__comment-count');
 const commentLoader = photoFullContainer.querySelector('.social__comments-loader');
+commentContainer.innerHTML = '';
 
 
 const rendeNextComments = () => {
